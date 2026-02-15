@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -5,7 +8,9 @@
 }
 
 body {
-    background: rgb(187, 187, 202)
+
+
+    background: #fff;
 }
 main {
     padding: 30px;
@@ -15,12 +20,16 @@ main {
 header > span {
     font-size: 0.85rem;
     color:#5f646d;
-    letter-spacing: 0.09rem;   
+    letter-spacing: 0.09rem; 
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
 }
 
 header > h1 {
-    color: #383d4b;
-    font-size: 3rem;
+    font-family: "Inter", sans-serif;
+    color: #57585a;
+    font-weight: 700;
+    font-size: 4rem;
     margin-top: 5px;
     text-align: center;
 } 
@@ -40,6 +49,8 @@ header > h1 {
 }
 
 .column_title {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
     color: #5d6e8b;
     font-size: 0.9em;
     margin: 20px;
@@ -81,19 +92,19 @@ header > h1 {
 }
 
 .blue {
-    background-color: rgb(156, 200, 226);
+    background-color: rgb(191, 207, 216);
     padding: 4px;
     border-radius: 2px;
 
 }
 .yellow {
-     background-color: rgb(247, 239, 135);
+     background-color: rgb(240, 235, 171);
     padding: 4px;
     border-radius: 2px;
 
 }
 .green {
-     background-color: rgb(156, 236, 199);
+     background-color: rgb(204, 236, 222);
     padding: 4px;
     border-radius: 2px;
 }
