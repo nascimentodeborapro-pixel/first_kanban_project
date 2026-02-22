@@ -45,19 +45,19 @@ header > h1 {
     flex: 1;
     background-color: #ebe5e8;
     height: 100dvh;
-    border-radius: 8px;
+    border-radius: 8px
 }
 
 .column_title {
     font-family: "Inter", sans-serif;
     font-weight: 700;
-    color: #5d6e8b;
+    color:#fff;
     font-size: 0.9em;
     margin: 20px;
     text-transform: uppercase;
     text-align: center;
-    letter-spacing: 2px;
-    margin-top: 1px;
+    letter-spacing: 1px;
+
     
 }
 
@@ -85,26 +85,8 @@ header > h1 {
     border: 2px solid #2482ff;
 }
 
-.red {
-    background-color: rgb(240, 195, 195);
-    padding: 4px;
-    border-radius: 2px;
-}
-
-.blue {
-    background-color: rgb(191, 207, 216);
-    padding: 4px;
-    border-radius: 2px;
-
-}
-.yellow {
-     background-color: rgb(240, 235, 171);
-    padding: 4px;
-    border-radius: 2px;
-
-}
-.green {
-     background-color: rgb(204, 236, 222);
-    padding: 4px;
-    border-radius: 2px;
+.color_top {
+    background-color:#375158 ;
+    padding: 5px;
+    
 }

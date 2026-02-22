@@ -37,7 +37,7 @@ const creatCard = ({ target }) => {
     card.contentEditable = "true";
 
     card.addEventListener("focusout",() =>{
-        card.contentEditable = "false";
+        card.contentEditable = "true";
         if(!card.textContent) card.remove();
 
     });
@@ -49,13 +49,10 @@ const creatCard = ({ target }) => {
     card.focus();
 
 }
-
-
  
 cards.forEach((card) => {
     card.addEventListener("dragstart", dragStart);
 });
-
 
 columns.forEach((column) => {
     column.addEventListener("dragover", dragOver);
