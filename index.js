@@ -28,8 +28,8 @@ const drop = ({ target }) => {
 };
 
 
-const creatCard = ({ target }) => {
-    if(!target.classList.contains("column_card")) return;
+const creatCard = (column, button) => {
+    if(!column.classList.contains("column_card")) return;
 
     const card = document.createElement("section");
     card.className = "card";
@@ -44,8 +44,9 @@ const creatCard = ({ target }) => {
 
     card.addEventListener("dragstart", dragStart);
     card.addEventListener("dblclick", creatCard)
+    column.insertBefore(card, button)
 
-    target.append(card);
+    column.insertBefore(card, button)
     card.focus();
 
 }
@@ -60,5 +61,11 @@ columns.forEach((column) => {
     column.addEventListener("dragleave", dragLeave);
     column.addEventListener("drop", drop);
     column.addEventListener("dblclick", creatCard);
+
+    const addBtn = column.querySelector('.add-cardbtn');
+
+    addBtn.addEventListener("click", () => {
+        creatCard(column, addBtn);
+    });
 });
 
