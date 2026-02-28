@@ -70,18 +70,26 @@ header > h1 {
 
 .add-cardbtn {
 
+    background-color: transparent;
+    color: #000000;
+    border: 2px solid #314a52 ;
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    width: 50%;
+
+
     margin-left: auto;
     display: block;
+    
 
-    color: #dfe1e6;
-    background-color:#314a52;
-    padding: 5px;
-    font-size: 15px;
-    letter-spacing: 1px;
 }
+
 .add-cardbtn:hover{
-    background-color: #0754da;
-    cursor: pointer;
+    background-color: #314a52 ;
+    color: #fff;
+    /* cursor:pointer; */
     transition: 0.5s ease;
 
 }
@@ -95,16 +103,36 @@ header > h1 {
     font-size: 0.9rem;
     color: #4d5c76;
     margin-bottom: 5px;
+    cursor: grab; /* default cursor to indicate draggability */
+}
 
+/* while the card is being dragged, show grabbing cursor */
+.card.dragging {
+    cursor: grabbing;
 }
 
 .column--highlitgh {
     background-color: #deebff;
     border: 2px solid #2482ff;
+
 }
 
 .color_top {
     background-color:#314a52 ;
     padding: 5px;
     
+}
+
+@media (max-width: 769px) {
+    body{
+        min-width: 50%
+
+    }
+
+    .columns{
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+
+    }
 }
