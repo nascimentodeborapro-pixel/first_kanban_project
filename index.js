@@ -62,29 +62,33 @@ const dragOver = (event) => {
 /*    DRAG ENTER  */ 
 
 
-const dragEnter = ({ target }) => {
-    if(target.classList.contains("column_card")) {
-        target.classList.add("column--highlitgh");
+const dragEnter = (event) => {
+    const column = event.target.closest(".column_card");
+    if (column) {
+        column.classList.add("column--highlitgh");
     }
 };
 /*    DRAG LEAVE*/
 
 
-const dragLeave = ({ target }) => {
-    target.classList.remove("column--highlitgh");
+const dragLeave = (event) => {
+    const column = event.target.closest(".column_card");
+    if (column) {
+        column.classList.remove("column--highlitgh");
+    }
 };
 
 /*    DROP  */
 
 
-const drop = ({ target }) => {
-    // quando drop passar o card para outra coluna 
-    if (target.classList.contains("column_card")) {
-        target.classList.remove("column--highlitgh");
-
-        const button = target.querySelector('.add-cardbtn');
+const drop = (event) => {
+    event.preventDefault();
+    const column = event.target.closest(".column_card");
+    if (column) {
+        column.classList.remove("column--highlitgh");
+        const button = column.querySelector('.add-cardbtn');
         if (draggedCard && draggedCard !== button) {
-            target.insertBefore(draggedCard, button);
+            column.insertBefore(draggedCard, button);
         }
     }
 };
@@ -124,7 +128,7 @@ cards.forEach((card) => {
         event.currentTarget.classList.remove('dragging');
     });
 
-    // mobile/touch support
+    // touch mobile
     card.addEventListener('touchstart', touchDragStart, {passive: false});
     card.addEventListener('touchmove', touchDragMove, {passive: false});
     card.addEventListener('touchend', touchDragEnd);
