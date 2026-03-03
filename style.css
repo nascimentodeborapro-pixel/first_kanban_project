@@ -103,10 +103,10 @@ header > h1 {
     font-size: 0.9rem;
     color: #4d5c76;
     margin-bottom: 5px;
-    cursor: grab; /* default cursor to indicate draggability */
+    cursor: grab; 
+    touch-action: none;
 }
 
-/* while the card is being dragged, show grabbing cursor */
 .card.dragging {
     cursor: grabbing;
 }

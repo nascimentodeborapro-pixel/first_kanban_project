@@ -2,6 +2,7 @@ const columns = document.querySelectorAll(".column_card");
 const cards = document.querySelectorAll(".card");
 const boarData =[];
 let draggedCard;
+let touchDraggedCard = null; 
 
 /*  DRAG START   */ 
 
@@ -12,6 +13,44 @@ const dragStart = (event) => {
     // aaplica ao class la no CSS;
     draggedCard.classList.add('dragging');
 };
+
+/* touch no mobi*/
+
+function touchDragStart(event) {
+    
+    event.preventDefault();
+    touchDraggedCard = event.currentTarget;
+    touchDraggedCard.classList.add('dragging');
+}
+
+function touchDragMove(event) {
+    event.preventDefault();
+    if (!touchDraggedCard) return;
+    const touch = event.touches[0];
+    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+    columns.forEach(col => col.classList.remove('column--highlitgh'));
+    if (el) {
+        const col = el.closest('.column_card');
+        if (col) col.classList.add('column--highlitgh');
+    }
+}
+
+function touchDragEnd(event) {
+    event.preventDefault();
+    if (!touchDraggedCard) return;
+    const touch = event.changedTouches[0];
+    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (el) {
+        const col = el.closest('.column_card');
+        if (col) {
+            const button = col.querySelector('.add-cardbtn');
+            col.insertBefore(touchDraggedCard, button);
+        }
+    }
+    touchDraggedCard.classList.remove('dragging');
+    columns.forEach(col => col.classList.remove('column--highlitgh'));
+    touchDraggedCard = null;
+}
 
 /*    DRAGOVER      */ 
 
@@ -67,7 +106,11 @@ const creatCard = (column, button) => {
 
     card.addEventListener("dragstart", dragStart);
     card.addEventListener("dblclick", creatCard);
-    ;
+    
+    // add touch support to newly created cards
+    card.addEventListener('touchstart', touchDragStart, {passive: false});
+    card.addEventListener('touchmove', touchDragMove, {passive: false});
+    card.addEventListener('touchend', touchDragEnd);
     
     column.insertBefore(card, button);    
     card.focus();
@@ -77,11 +120,14 @@ const creatCard = (column, button) => {
 cards.forEach((card) => {
     card.addEventListener("dragstart", dragStart);
     card.addEventListener("dragend", (event) => {
-
         draggedCard = null;
-    
         event.currentTarget.classList.remove('dragging');
     });
+
+    // mobile/touch support
+    card.addEventListener('touchstart', touchDragStart, {passive: false});
+    card.addEventListener('touchmove', touchDragMove, {passive: false});
+    card.addEventListener('touchend', touchDragEnd);
 });
 // aqui e onde a função esta sendo excutada
 columns.forEach((column) => {
